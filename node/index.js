@@ -27,10 +27,19 @@ connection.query(sql, function (error, results, fields) {
     if (error) throw error;
 });
 
+var arryString = [];
+connection.query('SELECT * FROM people', function (error, results, fields) {
+    if (error) throw error;
+    console.log('Cadastros: ', results);
+    arryString = results;
+});
+
 connection.end()
 
 app.get('/', (req, res) => {
-    res.send('<h1>Full Cycle</h1>')
+    res.send(`<h1>Full Cycle</h1> 
+             <h2>  <pre> ${JSON.stringify(arryString)} </pre> </h2>
+    `)
 })
 
 app.listen(port, () => {
