@@ -23,6 +23,8 @@ services:
       - node-network
     volumes: 
       - ./node:/usr/src/app
+      # Pasta anonima para evitar que o node_modules seja copiado para o container
+      - /usr/src/app/node_modules
     tty: true
     ports: 
       - "3000:3000"
